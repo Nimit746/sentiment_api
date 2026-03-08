@@ -1,0 +1,55 @@
+==============================================================
+  STAGE 2  EDA REPORT
+  Dataset: Twitter US Airline Sentiment (Kaggle)
+==============================================================
+
+DATASET OVERVIEW
+  Source            : Kaggle  Twitter US Airline Sentiment
+  Total raw rows    : 14,640
+  Airlines          : ['American', 'Delta', 'Southwest', 'US Airways', 'United', 'Virgin America']
+  Duplicate texts   : 213
+  Label conflicts   : 25
+  Low conf (<0.7)   : 3,872 (26.4%)
+  Clean samples     : 14,427
+  Date range        : 2015-02-17 to 2015-02-24
+
+CLASS DISTRIBUTION
+  negative  : 9,178  (62.7%)
+  neutral   : 3,099  (21.2%)
+  positive  : 2,363  (16.1%)
+  Imbalance ratio   : 3.88x
+  ACTION            : Use class-weighted CrossEntropyLoss
+
+TEXT LENGTH STATS
+  Word count  median=19  P95=27  P99=29
+  LSTM max_length   : 27 tokens
+  BERT max_length   : 128 (all tweets fit)
+
+VOCABULARY
+  Unique tokens     : 9,724
+  Recommended vocab : 8,000 (99% coverage)
+  Note              : strip @mentions + URLs before building vocab
+
+SPLITS  data/processed/
+  train.csv  : 11,541 (80%)
+  val.csv    : 1,443 (10%)
+  test.csv   : 1,443 (10%)
+  label_map  : negative=0  neutral=1  positive=2
+
+FIGURES  data/processed/eda_figures/
+  01_class_distribution.png
+  02_text_length_distribution.png
+  03_vocabulary_coverage.png
+  04_top_ngrams.png
+  05_negative_reasons.png
+  06_confidence_temporal.png
+  07_split_distribution.png
+
+STAGE 3 ACTION ITEMS
+  1. Strip @mentions, URLs, hashtags
+  2. Convert emojis to text tokens (strong signal)
+  3. Expand contractions for LSTM path
+  4. Build LSTM vocab from train.csv only  size 8,000
+  5. LSTM max_length=27  |  BERT max_length=128
+  6. Class weights = inverse frequency (neg:neu:pos ~ 1:3:4)
+==============================================================
