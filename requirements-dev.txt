@@ -1,0 +1,40 @@
+# ============================================================
+# Sentiment Analysis REST API — Development & Testing Dependencies
+# Install with: pip install -r requirements-dev.txt
+# These are NOT included in the production Docker image
+# ============================================================
+
+# ----------------------------
+# Testing
+# ----------------------------
+pytest==8.1.1
+pytest-asyncio==0.23.6               # Async test support
+pytest-cov==5.0.0                    # Coverage reports
+httpx==0.27.0                        # TestClient for FastAPI integration tests
+schemathesis==3.27.1                 # Contract testing against OpenAPI spec
+locust==2.24.1                       # Load / performance testing
+
+# ----------------------------
+# Code Quality & Linting
+# ----------------------------
+black==24.3.0                        # Code formatter
+isort==5.13.2                        # Import sorter
+flake8==7.0.0                        # Style and syntax linter
+mypy==1.9.0                          # Static type checker
+pre-commit==3.7.0                    # Git pre-commit hook manager
+
+# ----------------------------
+# Type Stubs (for mypy)
+# ----------------------------
+types-redis==4.6.0.20240311
+types-PyYAML==6.0.12.20240311
+pandas-stubs==2.2.1.240316
+
+# ----------------------------
+# Notebooks (EDA only)
+# ----------------------------
+jupyter==1.0.0
+ipykernel==6.29.4
+matplotlib==3.8.4
+seaborn==0.13.2
+wordcloud==1.9.3                     # Word frequency visualisation
